@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply text-gray-800 bg-gray-50;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-5 py-3 font-semibold rounded-full transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary-600 text-white hover:bg-secondary-700 focus:ring-secondary-500;
+  }
+  
+  .card {
+    @apply bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300;
+  }
+  
+  .section-heading {
+    @apply text-3xl md:text-4xl font-bold text-gray-900 mb-8 relative;
+  }
+  
+  .section-heading::after {
+    content: "";
+    @apply absolute bottom-0 left-0 w-16 h-1 bg-primary-600 -mb-3;
+  }
+  
+  .timeline-item {
+    @apply relative pl-10 pb-10 border-l-2 border-gray-300 last:border-transparent last:pb-0;
+  }
+  
+  .timeline-dot {
+    @apply absolute top-0 -left-[9px] w-4 h-4 rounded-full bg-primary-600;
+  }
+  
+  .skill-badge {
+    @apply px-3 py-1 text-sm font-medium rounded-full bg-gray-100 text-gray-800 hover:bg-primary-100 transition-colors duration-200;
+  }
+}
+
+/* Additional custom styles */
+.glass-card {
+  @apply backdrop-blur-sm bg-white/80 border border-white/20 shadow-xl;
+}
+
+.gradient-text {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-500;
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll bar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary-300 rounded-full hover:bg-primary-400;
+}
