@@ -31,14 +31,81 @@ interface Project {
 
 const projectsData: Project[] = [
   {
+    id: 'briansports',
+    title: 'Brian Sports',
+    category: 'Web Application',
+    image: '/pro.jpg',
+    description: 'A comprehensive sports website featuring live scores, news, and sports analytics with a modern, responsive design.',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel'],
+    links: [
+      { type: 'website', url: 'https://briansports.vercel.app/', label: 'Visit Website' },
+    ],
+    details: {
+      problem: 'Sports enthusiasts need a centralized platform for live scores, news, and analytics.',
+      solution: 'Built a modern sports website with real-time data and comprehensive sports coverage.',
+      features: [
+        'Live sports scores and updates',
+        'Sports news and articles',
+        'Team and player statistics',
+        'Responsive design for all devices',
+        'Fast loading with optimized performance'
+      ]
+    }
+  },
+  {
+    id: 'brianmovie',
+    title: 'Brian Movie Streaming',
+    category: 'Web Application',
+    image: '/pro.jpg',
+    description: 'A modern movie streaming platform with extensive movie database, search functionality, and user-friendly interface.',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Movie API', 'Tailwind CSS'],
+    links: [
+      { type: 'website', url: 'https://brianmovie.vercel.app/', label: 'Visit Website' },
+    ],
+    details: {
+      problem: 'Users need an intuitive platform to discover and stream movies with detailed information.',
+      solution: 'Created a comprehensive movie streaming platform with advanced search and filtering capabilities.',
+      features: [
+        'Extensive movie database integration',
+        'Advanced search and filtering',
+        'Movie trailers and detailed information',
+        'User favorites and watchlist',
+        'Responsive streaming interface'
+      ]
+    }
+  },
+  {
+    id: 'somaapp',
+    title: 'Soma App Platform',
+    category: 'Web Application',
+    image: '/pro.jpg',
+    description: 'Official website and platform for Soma App ecosystem, showcasing mobile applications and services.',
+    technologies: ['React', 'Modern Web Technologies', 'Responsive Design'],
+    links: [
+      { type: 'website', url: 'https://www.somaapp.net/', label: 'Visit Website' },
+    ],
+    details: {
+      problem: 'Need a professional web presence for mobile app portfolio and services.',
+      solution: 'Developed a comprehensive platform website showcasing the Soma App ecosystem.',
+      features: [
+        'Professional app showcase',
+        'Service descriptions and features',
+        'Download links and app information',
+        'Contact and support integration',
+        'SEO optimized for better visibility'
+      ]
+    }
+  },
+  {
     id: 'bontuteur',
     title: 'Bontuteur App',
     category: 'Mobile App',
-    image: '/projects/bontuteur.png',
+    image: '/bontuteur.jpg',
     description: 'A mobile application for tutoring services, connecting students with professional tutors in various subjects.',
     technologies: ['Flutter', 'Dart', 'Firebase', 'Google Maps API', 'Payment Integration'],
     links: [
-      { type: 'playstore', url: '#', label: 'View on Play Store' },
+      { type: 'playstore', url: 'https://play.google.com/store/apps/details?id=com.yelegroup.bontuteur', label: 'Download on Play Store' },
+      { type: 'website', url: 'https://www.somaapp.net/', label: 'Official Website' },
     ],
     details: {
       problem: 'Students struggling to find qualified tutors for personalized learning needs.',
@@ -53,14 +120,38 @@ const projectsData: Project[] = [
     }
   },
   {
+    id: 'bontuteur-pro',
+    title: 'Bontuteur Pro',
+    category: 'Mobile App',
+    image: '/pro.jpg',
+    description: 'Advanced version of Bontuteur with premium features for professional tutors and enhanced learning experiences.',
+    technologies: ['Flutter', 'Dart', 'Firebase', 'Advanced Analytics', 'Premium Features'],
+    links: [
+      { type: 'playstore', url: 'https://play.google.com/store/apps/details?id=com.yelegroup.tutor', label: 'Download on Play Store' },
+      { type: 'website', url: 'https://www.somaapp.net/', label: 'Official Website' },
+    ],
+    details: {
+      problem: 'Professional tutors need advanced tools and features for better service delivery.',
+      solution: 'Enhanced the tutoring platform with professional-grade features and analytics.',
+      features: [
+        'Advanced tutor dashboard',
+        'Professional scheduling tools',
+        'Enhanced payment processing',
+        'Detailed analytics and reporting',
+        'Premium customer support'
+      ]
+    }
+  },
+  {
     id: 'drassy',
     title: 'Drassy App',
     category: 'Mobile App',
-    image: '/projects/drassy.png',
+    image: '/drassy.png',
     description: 'A comprehensive mobile app for fashion and clothing needs, connecting customers with tailors and fashion designers.',
     technologies: ['Flutter', 'Dart', 'Firebase', 'Cloud Firestore', 'Push Notifications'],
     links: [
-      { type: 'playstore', url: '#', label: 'View on Play Store' },
+      { type: 'playstore', url: 'https://play.google.com/store/apps/details?id=com.yelegroup.drazzy', label: 'Download on Play Store' },
+      { type: 'website', url: 'https://www.somaapp.net/', label: 'Official Website' },
     ],
     details: {
       problem: 'Difficulty in connecting with reliable tailors and tracking custom clothing orders.',
@@ -75,32 +166,10 @@ const projectsData: Project[] = [
     }
   },
   {
-    id: 'soko',
-    title: 'Soko Beauty App',
-    category: 'Mobile App',
-    image: '/projects/soko.png',
-    description: 'A beauty services marketplace app connecting customers with beauty service providers, featuring appointment booking and secure payments.',
-    technologies: ['Flutter', 'Dart', 'Provider State Management', 'Firebase', 'RESTful APIs'],
-    links: [
-      { type: 'playstore', url: '#', label: 'View on Play Store' },
-    ],
-    details: {
-      problem: 'Fragmented beauty services market making it difficult for customers to find and book services.',
-      solution: 'Developed an app that centralizes beauty service providers and allows for easy discovery and booking.',
-      features: [
-        'Service provider profiles and portfolios',
-        'Appointment scheduling system',
-        'Payment processing',
-        'Rating and review system',
-        'Service categorization and search'
-      ]
-    }
-  },
-  {
     id: 'sms-chatgpt',
     title: 'SMS ChatGPT',
     category: 'Web Application',
-    image: '/projects/sms-chatgpt.png',
+    image: '/pro.jpg',
     description: 'A system that allows users in remote areas to access AI tools like ChatGPT through SMS, bridging the digital divide.',
     technologies: ['Node.js', 'Express.js', 'Prisma', "Africa's Talking API", 'OpenAI API'],
     links: [
@@ -123,7 +192,7 @@ const projectsData: Project[] = [
     id: 'blockchain-marks',
     title: 'Blockchain for Academic Records',
     category: 'Blockchain',
-    image: '/projects/blockchain.png',
+    image: '/pro.jpg',
     description: 'A blockchain-based solution to address the problem of missing marks in public universities, ensuring integrity and transparency of academic records.',
     technologies: ['Blockchain', 'ICP', 'Smart Contracts', 'Web3'],
     links: [
@@ -164,18 +233,43 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
       onClick={() => onClick(project)}
     >
       <div className="h-48 bg-gray-200 relative overflow-hidden">
-        {/* This is a placeholder for project images. In a real implementation, you would have actual project images */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-secondary-500 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-          <div className="h-full w-full flex items-center justify-center text-white">
-            {project.category === 'Mobile App' ? (
-              <FaMobileAlt className="text-6xl" />
-            ) : project.category === 'Web Application' ? (
-              <FaLaptopCode className="text-6xl" />
-            ) : (
-              <FaCode className="text-6xl" />
-            )}
+        {project.image ? (
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover group-hover:scale-110 transition-transform duration-300"
+          />
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-secondary-500 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="h-full w-full flex items-center justify-center text-white">
+              {project.category === 'Mobile App' ? (
+                <FaMobileAlt className="text-6xl" />
+              ) : project.category === 'Web Application' ? (
+                <FaLaptopCode className="text-6xl" />
+              ) : (
+                <FaCode className="text-6xl" />
+              )}
+            </div>
           </div>
-        </div>
+        )}
+        
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"></div>
+        
+        {/* Featured badge for web applications */}
+        {project.category === 'Web Application' && (
+          <div className="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+            Live Website
+          </div>
+        )}
+        
+        {/* Play Store badge for mobile apps */}
+        {project.category === 'Mobile App' && project.links.some(link => link.type === 'playstore') && (
+          <div className="absolute top-2 left-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+            On Play Store
+          </div>
+        )}
       </div>
       <div className="p-6">
         <div className="flex justify-between items-start mb-3">
@@ -196,11 +290,39 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
           )}
         </div>
         <motion.div 
-          className="flex justify-center mt-4"
+          className="flex gap-2 mt-4"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <button className="text-primary-600 border border-primary-600 px-4 py-2 rounded-full text-sm font-medium hover:bg-primary-50 transition-colors duration-300">
+          {/* Quick action buttons for websites */}
+          {project.category === 'Web Application' && project.links.length > 0 && (
+            <a
+              href={project.links[0].url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-primary-700 transition-colors duration-300 text-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <FaGlobe className="inline mr-1" />
+              Visit Website
+            </a>
+          )}
+          
+          {/* Quick action buttons for mobile apps */}
+          {project.category === 'Mobile App' && project.links.some(link => link.type === 'playstore') && (
+            <a
+              href={project.links.find(link => link.type === 'playstore')?.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 bg-green-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-green-700 transition-colors duration-300 text-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <FaPlayCircle className="inline mr-1" />
+              Play Store
+            </a>
+          )}
+          
+          <button className="flex-1 text-primary-600 border border-primary-600 px-4 py-2 rounded-full text-sm font-medium hover:bg-primary-50 transition-colors duration-300">
             View Details
           </button>
         </motion.div>
