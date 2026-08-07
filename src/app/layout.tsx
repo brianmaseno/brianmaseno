@@ -1,12 +1,23 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Syne, Outfit } from 'next/font/google';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const syne = Syne({
+  subsets: ['latin'],
+  variable: '--font-syne',
+  display: 'swap',
+});
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  variable: '--font-outfit',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
-  title: 'Brian Maseno Mayoga | Mobile & Backend Developer',
-  description: 'Professional portfolio of Brian Maseno Mayoga - Flutter Developer, Mobile Development Lead, and Backend Developer specializing in creating innovative user-focused applications.',
+  title: 'Brian Maseno Mayoga | Lead Mobile & Web Developer',
+  description:
+    'Lead Mobile Developer and Web Developer specializing in Flutter, Laravel, Next.js, and cloud-integrated applications. Portfolio of Brian Maseno Mayoga.',
 };
 
 export default function RootLayout({
@@ -15,10 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        {children}
-      </body>
+    <html lang="en" className={`${syne.variable} ${outfit.variable}`}>
+      <body className="page-grain font-sans">{children}</body>
     </html>
   );
 }

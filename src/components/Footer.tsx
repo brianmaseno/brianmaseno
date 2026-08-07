@@ -1,115 +1,91 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { FaLinkedin, FaGithub, FaEnvelope, FaArrowUp } from 'react-icons/fa';
 
 const Footer = () => {
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-white">
-      {/* Scroll to top button */}
-      <div className="container mx-auto px-4 md:px-6 relative">
-        <button 
+    <footer className="bg-ink text-white">
+      <div className="container-narrow relative pt-14 pb-10">
+        <button
           onClick={scrollToTop}
-          className="absolute -top-5 left-1/2 transform -translate-x-1/2 p-3 bg-primary-600 text-white rounded-full shadow-lg hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors"
+          className="absolute -top-5 left-1/2 flex h-10 w-10 -translate-x-1/2 items-center justify-center bg-accent text-white transition-colors hover:bg-accent-light"
           aria-label="Scroll to top"
         >
-          <FaArrowUp />
+          <FaArrowUp className="text-sm" />
         </button>
-      </div>
-      
-      <div className="container mx-auto px-4 md:px-6 pt-16 pb-8">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
-          {/* About Column */}
-          <div className="md:col-span-2">
-            <h3 className="text-xl font-bold mb-4">Brian Maseno Mayoga</h3>
-            <p className="text-gray-400 mb-4 max-w-md">
-              A passionate mobile developer with expertise in Flutter and backend integrations, 
-              dedicated to creating innovative user-focused applications.
+
+        <div className="mb-10 grid gap-10 md:grid-cols-3">
+          <div className="md:col-span-1">
+            <h3 className="font-display text-xl font-bold">Brian Maseno</h3>
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/55">
+              Lead Mobile &amp; Web Developer shipping Flutter apps, Laravel backends, and modern web products.
             </p>
-            <div className="flex space-x-4">
-              <a 
-                href="https://www.linkedin.com/in/brian-maseno-17a47a244/" 
-                target="_blank" 
+            <div className="mt-5 flex gap-4">
+              <a
+                href="https://www.linkedin.com/in/brian-maseno-17a47a244/"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-primary-400 transition-colors"
+                className="text-white/50 transition-colors hover:text-accent-light"
                 aria-label="LinkedIn"
               >
-                <FaLinkedin className="text-xl" />
+                <FaLinkedin />
               </a>
-              <a 
-                href="https://github.com/brianmaseno" 
-                target="_blank" 
+              <a
+                href="https://github.com/brianmaseno"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-primary-400 transition-colors"
+                className="text-white/50 transition-colors hover:text-accent-light"
                 aria-label="GitHub"
               >
-                <FaGithub className="text-xl" />
+                <FaGithub />
               </a>
-              <a 
-                href="mailto:brianmayoga@gmail.com" 
-                className="text-gray-400 hover:text-primary-400 transition-colors"
+              <a
+                href="mailto:brianmayoga@gmail.com"
+                className="text-white/50 transition-colors hover:text-accent-light"
                 aria-label="Email"
               >
-                <FaEnvelope className="text-xl" />
+                <FaEnvelope />
               </a>
             </div>
           </div>
-          
-          {/* Quick Links */}
+
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="#home" className="text-gray-400 hover:text-white transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="#about" className="text-gray-400 hover:text-white transition-colors">
-                  About Me
-                </Link>
-              </li>
-              <li>
-                <Link href="#experience" className="text-gray-400 hover:text-white transition-colors">
-                  Experience
-                </Link>
-              </li>
-              <li>
-                <Link href="#skills" className="text-gray-400 hover:text-white transition-colors">
-                  Skills
-                </Link>
-              </li>
-              <li>
-                <Link href="#projects" className="text-gray-400 hover:text-white transition-colors">
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link href="#contact" className="text-gray-400 hover:text-white transition-colors">
-                  Contact
-                </Link>
-              </li>
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white/40">
+              Navigate
+            </h4>
+            <ul className="space-y-2 text-sm text-white/65">
+              {[
+                ['Projects', '#projects'],
+                ['Experience', '#experience'],
+                ['Skills', '#skills'],
+                ['Education', '#education'],
+                ['Contact', '#contact'],
+              ].map(([label, href]) => (
+                <li key={href}>
+                  <Link href={href} className="transition-colors hover:text-white">
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
-          
-          {/* Technical Skills */}
+
           <div>
-            <h3 className="text-lg font-semibold mb-4">Technical Skills</h3>
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white/40">
+              Focus
+            </h4>
             <div className="flex flex-wrap gap-2">
-              {["Flutter", "Dart", "React", "Node.js", "Firebase", "MongoDB"].map((skill, i) => (
-                <span 
-                  key={i} 
-                  className="inline-block px-3 py-1 text-xs bg-gray-800 text-gray-300 rounded-full"
+              {['Flutter', 'Laravel', 'Next.js', 'Firebase', 'Azure', 'Payments'].map((skill) => (
+                <span
+                  key={skill}
+                  className="border border-white/10 px-2.5 py-1 text-xs text-white/60"
                 >
                   {skill}
                 </span>
@@ -118,19 +94,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-center pt-8 border-t border-gray-800"
-        >
-          <p className="text-gray-500 text-sm">
-            &copy; {currentYear} Brian Maseno Mayoga. All rights reserved.
-          </p>
-          <p className="text-gray-600 text-xs mt-2">
-            Built with Next.js, React, Tailwind CSS, and Framer Motion
-          </p>
-        </motion.div>
+        <div className="border-t border-white/10 pt-6 text-center text-sm text-white/40">
+          &copy; {year} Brian Maseno Mayoga. All rights reserved.
+        </div>
       </div>
     </footer>
   );

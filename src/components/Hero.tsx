@@ -2,121 +2,81 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 
 const Hero = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
   return (
-    <section 
-      id="home" 
-      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-900 via-primary-800 to-dark overflow-hidden py-20"
-    >
-      {/* Background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-72 h-72 bg-secondary-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-float" style={{ animationDelay: '4s' }}></div>
+    <section id="home" className="relative min-h-screen overflow-hidden">
+      <div className="hero-mesh absolute inset-0" />
+
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute left-[8%] top-[18%] h-64 w-64 animate-float-soft rounded-full bg-accent/30 blur-3xl" />
+        <div
+          className="absolute bottom-[15%] right-[12%] h-72 w-72 animate-float-soft rounded-full bg-sand/20 blur-3xl"
+          style={{ animationDelay: '2s' }}
+        />
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-          {/* Image column */}
-          <motion.div
-            ref={ref}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ 
-              duration: 0.5, 
-              delay: 0.2,
-              type: "spring",
-              stiffness: 100
-            }}
-            className="w-full lg:w-5/12 order-2 lg:order-1"
-          >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-secondary-500 transform rotate-6 rounded-2xl blur-sm"></div>
-              <div className="relative bg-white p-2 rounded-2xl shadow-2xl transform hover:scale-[1.01] transition-transform duration-300">
-                <Image 
-                  src="/IMG_7265.jpg" 
-                  alt="Brian Maseno" 
-                  width={500} 
-                  height={500} 
-                  className="w-full h-auto rounded-xl"
-                  priority
-                />
-              </div>
-              <div className="absolute -bottom-5 -right-5 bg-white rounded-full p-3 shadow-lg">
-                <div className="bg-green-500 h-5 w-5 rounded-full animate-pulse"></div>
-              </div>
-            </div>
-          </motion.div>
+      <div className="container-narrow relative z-10 flex min-h-screen flex-col justify-center pb-16 pt-28 lg:flex-row lg:items-center lg:gap-16">
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="flex-1 text-center lg:text-left"
+        >
+          <p className="mb-4 font-display text-sm font-semibold uppercase tracking-[0.22em] text-sand-light">
+            Lead Mobile &amp; Web Developer
+          </p>
+          <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
+            Brian Maseno
+            <span className="mt-1 block text-accent-light">Mayoga</span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-white/70 lg:mx-0">
+            Building production mobile apps and client-facing web systems with Flutter,
+            Laravel, and modern cloud stacks — from concept to Play Store.
+          </p>
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+            <a href="#projects" className="btn bg-white text-ink hover:bg-white/90">
+              View Projects
+            </a>
+            <a href="#experience" className="btn border border-white/25 text-white hover:border-white/50 hover:bg-white/5">
+              Experience
+            </a>
+          </div>
+        </motion.div>
 
-          {/* Text column */}
-          <motion.div 
-            ref={ref}
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ 
-              duration: 0.5, 
-              delay: 0.4,
-              ease: "easeOut"
-            }}
-            className="w-full lg:w-7/12 order-1 lg:order-2 text-center lg:text-left"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight">
-              <span className="inline-block">Hello, I'm</span>
-            </h2>
-            <h1 className="mt-2 text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-3">
-              Brian Maseno Mayoga
-            </h1>
-            <div className="inline-flex h-1 w-20 bg-primary-400 mb-6"></div>
-            <h3 className="text-xl md:text-2xl font-semibold text-primary-200 mb-6">
-              Mobile Developer | Flutter Expert | Backend Developer
-            </h3>
-            <p className="text-gray-300 text-lg max-w-2xl mx-auto lg:mx-0 mb-8">
-              A passionate and results-driven Mobile Developer with a strong foundation in Flutter and 
-              backend integrations, delivering innovative, user-focused applications while growing professionally 
-              in a dynamic and collaborative team environment.
-            </p>
-            <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
-              <a 
-                href="#contact" 
-                className="btn btn-primary"
-              >
-                Contact Me
-              </a>
-              <a 
-                href="#projects" 
-                className="btn bg-white text-primary-800 hover:bg-gray-100"
-              >
-                View My Work
-              </a>
-            </div>
-          </motion.div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.15, ease: 'easeOut' }}
+          className="relative mt-12 w-full max-w-md flex-shrink-0 self-center lg:mt-0 lg:max-w-sm xl:max-w-md"
+        >
+          <div className="relative aspect-[4/5] overflow-hidden">
+            <div className="absolute -inset-3 rounded-sm bg-gradient-to-br from-accent/40 to-sand/30 blur-md" />
+            <Image
+              src="/IMG_7265.jpg"
+              alt="Brian Maseno Mayoga"
+              fill
+              priority
+              className="relative z-10 object-cover object-top"
+              sizes="(max-width: 768px) 90vw, 400px"
+            />
+          </div>
+        </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
-        <span className="text-white/70 text-sm mb-2">Scroll Down</span>
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center p-1">
-          <motion.div 
-            animate={{ 
-              y: [0, 12, 0],
-            }}
-            transition={{ 
-              repeat: Infinity,
-              duration: 1.5,
-              ease: "easeInOut"
-            }}
-            className="w-1.5 h-1.5 bg-white rounded-full"
-          />
-        </div>
-      </div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 0.6 }}
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex"
+      >
+        <span className="text-xs uppercase tracking-widest text-white/40">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
+          className="h-8 w-px bg-white/35"
+        />
+      </motion.div>
     </section>
   );
 };

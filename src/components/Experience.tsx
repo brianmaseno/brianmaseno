@@ -1,231 +1,126 @@
 'use client';
 
-import { useState } from 'react';
-import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
-import { FaBriefcase, FaExternalLinkAlt } from 'react-icons/fa';
-
-interface Project {
-  name: string;
-  link: string;
-  description: string;
-}
+import { useInView } from 'react-intersection-observer';
 
 interface ExperienceItem {
-  id: string;
   title: string;
   company: string;
   period: string;
-  description: string[];
-  projects: Project[];
-  techStack: string[];
+  points: string[];
+  stack: string[];
 }
 
 const experienceData: ExperienceItem[] = [
   {
-    id: 'yele',
-    title: "Mobile Developer (Lead)",
-    company: "YELE GROUP (Alfa Yele)",
-    period: "October 2024 – May 2025",
-    description: [
-      "Led the mobile development team at Alfa Yele, overseeing the design and deployment of production-grade applications",
-      "Developed and deployed three Android applications to Google Play Store: Bontuteur, Bontuteur Pro, and Drassy App",
-      "Integrated Firebase authentication, payment systems, and custom user dashboards"
-    ],    projects: [
-      {
-        name: "Bontuteur",
-        link: "#",
-        description: "Educational platform for tutoring services"
-      },
-      {
-        name: "Bontuteur Pro",
-        link: "#",
-        description: "Advanced version with premium features"
-      },
-      {
-        name: "Drassy App",
-        link: "#",
-        description: "Fashion and styling application"
-      }
+    title: 'Lead Mobile Developer and Web Developer',
+    company: 'Digisrupt Limited',
+    period: 'Feb 2026 – Present',
+    points: [
+      'Lead a three-person technology team in building and deploying mobile and web applications.',
+      'Develop client-facing systems including DCANDSONS, Evimeria, and Pamojah.',
+      'Developed and deployed the Pamojah Android application to the Google Play Store.',
     ],
-    techStack: ["Flutter", "Dart", "Firebase", "RESTful APIs", "Google Play Console"]
+    stack: ['Flutter', 'Dart', 'Next.js', 'Laravel', 'Firebase', 'Payment Integration'],
   },
   {
-    id: 'dukatech',
-    title: "Mobile Developer",
-    company: "Dukatech Technologies",
-    period: "February 2024 – October 2024",
-    description: [
-      "Developed cross-platform apps using Flutter and Dart",
-      "Focused on UI/UX responsiveness, Firebase integration, and RESTful API consumption"
-    ],    projects: [
-      {
-        name: "Soko Beauty App",
-        link: "#",
-        description: "A beauty services app connecting customers and service providers, with secure user authentication and a clean UI"
-      }
+    title: 'Lead Mobile Developer, Web Developer and Backend Developer',
+    company: 'OHCARGO Limited',
+    period: 'Aug 2025 – Present',
+    points: [
+      'Lead the mobile development team in the design and deployment of production-grade applications using Flutter and Laravel.',
+      'Developed company websites including Aviemo, OHCARGO, and Liveguid.',
+      'Contribute to backend development and integration between applications, APIs, and supporting services.',
     ],
-    techStack: ["Flutter", "Dart", "Firebase", "RESTful APIs", "State Management (Provider)"]
+    stack: ['Flutter', 'Laravel', 'REST APIs', 'Node.js', 'MySQL', 'Firebase'],
   },
   {
-    id: 'mactec',
-    title: "IT Tutor and Instructor",
-    company: "Mactec Professional Institute",
-    period: "January 2021 – May 2021",    description: [
-      "Taught computer packages and introductory programming",
-      "Provided hands-on practical sessions for students"
+    title: 'Lead Mobile Developer',
+    company: 'Yele Group (Alfa Yele)',
+    period: 'Oct 2024 – May 2025',
+    points: [
+      'Led the mobile development team in designing and deploying production-grade applications.',
+      'Developed and deployed three Android applications to the Google Play Store: Bontuteur, Bontuteur Pro, and Drassy App.',
+      'Integrated Firebase authentication, payment systems, and custom user dashboards.',
     ],
-    projects: [],
-    techStack: ["Microsoft Office", "Basic Programming", "Computer Fundamentals"]
-  }
+    stack: ['Flutter', 'Dart', 'Firebase', 'Payment Integration', 'Google Play'],
+  },
+  {
+    title: 'Mobile Developer',
+    company: 'Dukatech Technologies',
+    period: 'Feb 2023 – Oct 2024',
+    points: [
+      'Developed cross-platform applications using Flutter and Dart.',
+      'Implemented responsive user interfaces, Firebase integrations, and RESTful API consumption.',
+      'Developed Soko Beauty App, connecting customers and beauty service providers through secure authentication and a clean user interface.',
+    ],
+    stack: ['Flutter', 'Dart', 'Firebase', 'REST APIs'],
+  },
+  {
+    title: 'IT Tutor and Instructor',
+    company: 'Mactec Professional Institute',
+    period: 'Jan 2021 – May 2021',
+    points: [
+      'Taught computer packages and introductory programming.',
+      'Delivered hands-on practical sessions and helped students understand technical concepts.',
+    ],
+    stack: ['Computer Packages', 'Introductory Programming'],
+  },
 ];
 
-interface TimelineItemProps {
-  data: ExperienceItem;
-  index: number;
-  isActive: boolean;
-  onClick: (id: string) => void;
-}
-
-const TimelineItem = ({ data, index, isActive, onClick }: TimelineItemProps) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  return (
-    <motion.div 
-      ref={ref}
-      initial={{ opacity: 0, x: -20 }}
-      animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{ 
-        duration: 0.5, 
-        delay: index * 0.1,
-        ease: "easeOut"
-      }}
-      className={`timeline-item ${isActive ? 'opacity-100' : 'opacity-70'}`}
-      onClick={() => onClick(data.id)}
-    >
-      <div className={`timeline-dot ${isActive ? 'ring-4 ring-primary-100' : ''}`}></div>
-      <div className="ml-4">
-        <h3 className={`text-xl font-bold ${isActive ? 'text-primary-600' : 'text-gray-800'}`}>{data.company}</h3>
-        <p className="text-sm text-gray-500">{data.period}</p>
-      </div>
-    </motion.div>
-  );
-};
-
 const Experience = () => {
-  const [activeId, setActiveId] = useState('yele');
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const activeExperience = experienceData.find(exp => exp.id === activeId) || experienceData[0];
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section id="experience" className="py-20 bg-white">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">My Experience</h2>
-          <div className="h-1 w-20 bg-primary-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-600">
-            Professional journey as a Mobile and Backend Developer
+    <section id="experience" className="section-pad bg-surface">
+      <div className="container-narrow">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="mb-14 max-w-2xl"
+        >
+          <p className="section-label mb-3">Experience</p>
+          <h2 className="section-title mb-4">Where I lead and ship</h2>
+          <p className="text-lg text-ink-muted">
+            Leading mobile, web, and backend delivery for production products.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="md:col-span-1">
-            <div className="bg-gray-50 p-6 rounded-xl h-full">
-              {experienceData.map((exp, index) => (
-                <TimelineItem 
-                  key={exp.id}
-                  data={exp}
-                  index={index}
-                  isActive={activeId === exp.id}
-                  onClick={setActiveId}
-                />
-              ))}
-            </div>
-          </div>
-
-          <div 
-            ref={ref}
-            className="md:col-span-2 bg-white rounded-xl shadow-md p-8 transition-all duration-300"
-          >
-            <motion.div
-              key={activeId}
+        <div className="space-y-0 border-t border-ink/10">
+          {experienceData.map((job, index) => (
+            <motion.article
+              key={job.company}
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
-              className="h-full flex flex-col"
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: index * 0.12 }}
+              className="grid gap-6 border-b border-ink/10 py-10 md:grid-cols-12 md:gap-10"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 bg-primary-100 text-primary-600 rounded-full">
-                  <FaBriefcase className="text-xl" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900">{activeExperience.title}</h3>
-                  <p className="text-primary-600 font-medium">{activeExperience.company}</p>
-                </div>
+              <div className="md:col-span-4">
+                <p className="mb-1 text-sm font-medium text-accent">{job.period}</p>
+                <h3 className="font-display text-xl font-bold text-ink">{job.company}</h3>
+                <p className="mt-2 text-sm text-ink-muted">{job.title}</p>
               </div>
-              
-              <p className="text-sm text-gray-500 mb-6">{activeExperience.period}</p>
-              
-              <div className="mb-6">
-                <h4 className="text-lg font-semibold mb-3">Responsibilities</h4>
-                <ul className="space-y-2">
-                  {activeExperience.description.map((item, i) => (
-                    <li key={i} className="flex items-start">
-                      <span className="text-primary-600 mr-2">•</span>
-                      <span className="text-gray-700">{item}</span>
+              <div className="md:col-span-8">
+                <ul className="space-y-3">
+                  {job.points.map((point) => (
+                    <li key={point} className="flex gap-3 text-ink-soft leading-relaxed">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 bg-accent" />
+                      <span>{point}</span>
                     </li>
                   ))}
                 </ul>
-              </div>
-              
-              {activeExperience.projects && activeExperience.projects.length > 0 && (
-                <div className="mb-6">
-                  <h4 className="text-lg font-semibold mb-3">Projects</h4>
-                  <div className="space-y-3">
-                    {activeExperience.projects.map((project, i) => (
-                      <div key={i} className="bg-gray-50 p-3 rounded-lg">
-                        <div className="flex justify-between items-center">
-                          <h5 className="font-medium text-gray-800">{project.name}</h5>
-                          {project.link && (
-                            <a 
-                              href={project.link} 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="text-primary-600 hover:text-primary-700 inline-flex items-center text-sm"
-                            >
-                              View <FaExternalLinkAlt className="ml-1 text-xs" />
-                            </a>
-                          )}
-                        </div>
-                        {project.description && (
-                          <p className="text-sm text-gray-600 mt-1">{project.description}</p>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-              
-              <div className="mt-auto">
-                <h4 className="text-lg font-semibold mb-3">Tech Stack</h4>
-                <div className="flex flex-wrap gap-2">
-                  {activeExperience.techStack.map((tech, i) => (
-                    <span key={i} className="skill-badge">
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {job.stack.map((tech) => (
+                    <span key={tech} className="skill-chip">
                       {tech}
                     </span>
                   ))}
                 </div>
               </div>
-            </motion.div>
-          </div>
+            </motion.article>
+          ))}
         </div>
       </div>
     </section>

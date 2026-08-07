@@ -8,47 +8,48 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', 'sans-serif'],
+        display: ['var(--font-syne)', 'sans-serif'],
+        sans: ['var(--font-outfit)', 'sans-serif'],
       },
       colors: {
-        primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
+        ink: {
+          DEFAULT: '#0A1628',
+          soft: '#1C2A3A',
+          muted: '#5A6A7A',
         },
-        secondary: {
-          50: '#ecfdf5',
-          100: '#d1fae5',
-          200: '#a7f3d0',
-          300: '#6ee7b7',
-          400: '#34d399',
-          500: '#10b981',
-          600: '#059669',
-          700: '#047857',
-          800: '#065f46',
-          900: '#064e3b',
+        surface: {
+          DEFAULT: '#F3F5F7',
+          raised: '#FFFFFF',
+          subtle: '#E8ECF0',
         },
-        dark: '#111827',
+        accent: {
+          DEFAULT: '#1A6B5C',
+          light: '#2A8F7A',
+          dark: '#0F4A3F',
+          mist: '#E6F2EF',
+        },
+        sand: {
+          DEFAULT: '#C4A574',
+          light: '#E8D9C0',
+        },
       },
       animation: {
-        'float': 'float 6s ease-in-out infinite',
-        'fade-in': 'fade-in 1.5s ease-out',
+        'fade-up': 'fade-up 0.7s ease-out forwards',
+        'fade-in': 'fade-in 0.6s ease-out forwards',
+        'float-soft': 'float-soft 8s ease-in-out infinite',
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
+        'fade-up': {
+          '0%': { opacity: '0', transform: 'translateY(24px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
         'fade-in': {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
+        },
+        'float-soft': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-8px)' },
         },
       },
     },
